@@ -6,7 +6,7 @@
 #    By: digil-pa <digil-pa@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/13 15:07:01 by digil-pa          #+#    #+#              #
-#    Updated: 2023/04/17 17:34:51 by digil-pa         ###   ########.fr        #
+#    Updated: 2023/04/26 12:46:36 by digil-pa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,6 @@ HEADER = pipex.h
 SRCS	=	libft_utils.c	\
 		 	pipex_utils.c	\
 		 	pipex.c			\
-		 		\
-		 		\
-		 		\
 
 OBJS	= $(SRCS:.c=.o)
 
