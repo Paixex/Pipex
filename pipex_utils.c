@@ -12,3 +12,37 @@
 
 #include "pipex.h"
 
+
+
+void    get_free(char **lst)
+{
+    int i;
+
+    i = 0;
+    if(lst)
+    {
+        while(lst[i])
+            free(lst[i++]);
+        free(lst);
+    }
+
+}
+
+void    errors (int error)
+{
+    if(error = 0)
+        perror("Invalid number of parameters");
+    if(error = 1)
+        perror("Error initializing the pipe");
+    if(error = 2)
+        perror("Error initializing the fork");
+    if(error = 3)
+        perror("Error reading the infile");
+    if(error = 4)
+        perror("Error initializing the outfile");
+    if(error = 5)
+        perror("Path not found");
+    if(error = 6)
+        perror("Error related to dup2");
+    exit(1);
+}
