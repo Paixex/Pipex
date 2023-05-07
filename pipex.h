@@ -6,7 +6,7 @@
 /*   By: digil-pa <digil-pa@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:25:23 by digil-pa          #+#    #+#             */
-/*   Updated: 2023/04/26 12:51:02 by digil-pa         ###   ########.fr       */
+/*   Updated: 2023/05/07 17:12:09 by digil-pa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 /*--------------------------------------------------------*/
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stddef.h>
+# include <sys/wait.h>
 
 /*--------------------------------------------------------*/
 
@@ -31,5 +34,8 @@ static int		ft_letter_count(char const *s, char c);
 static int		ft_word_count(char const *s, char c);
 static char		*ft_stralloc(char **strs, char const *s, int *i, char c);
 char			**ft_split(char const *s, char c);
+void			get_free(char **list);
+char			getpath(char **envp, char	*command);
+void			errors(int error);
 
 #endif

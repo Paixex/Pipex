@@ -6,20 +6,21 @@
 #    By: digil-pa <digil-pa@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/13 15:07:01 by digil-pa          #+#    #+#              #
-#    Updated: 2023/04/26 12:46:36 by digil-pa         ###   ########.fr        #
+#    Updated: 2023/05/07 17:10:04 by digil-pa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex.a
 HEADER = pipex.h
 
-SRCS	=	libft_utils.c	\
+SRCS	=	ft_split.c
+			libft_utils.c	\
 		 	pipex_utils.c	\
 		 	pipex.c			\
 
 OBJS	= $(SRCS:.c=.o)
 
-CC	= gcc
+CC	= cc
 
 RM	= rm -f
 
