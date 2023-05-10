@@ -6,7 +6,7 @@
 /*   By: digil-pa <digil-pa@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:12:21 by digil-pa          #+#    #+#             */
-/*   Updated: 2023/05/09 18:59:13 by digil-pa         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:09:23 by digil-pa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,27 @@ void	first(char **envp, char **av, int *pipefd)
 	avsplit = ft_split(av[2], ' ');
 	str = getpath(envp, avsplit[0]);
 	execve(str, avsplit, envp);
+	get_free(avsplit);
+	free(str);
+	exit(4);
+}
+
+void	second(char **envp, char **av, int *pipefd)
+{
+	char	*str;
+	char	**avsplit;
+	int		outfile;
+	
+	close(pipefd[1]);
+	outfile = open(av[4] | O_WRONLY | O_CREAT | O_TRUNC);
+	if (outfile < 0)
+		errors(4);
+	if (dup2(outfile, STDOUT_FILENO) < 0)
+		erros(6);
+	if (dup2(pipefd[0], STDIN_FILENO) < 0)
+		errors(6);
+	avsplit = ft_split(av[3], ' ');
+	str = getpath(envp, avsplit[0]);
 	get_free(avsplit);
 	free(str);
 	exit(4);
