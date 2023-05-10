@@ -6,7 +6,7 @@
 /*   By: digil-pa <digil-pa@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:12:21 by digil-pa          #+#    #+#             */
-/*   Updated: 2023/05/10 18:09:23 by digil-pa         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:42:23 by digil-pa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	main(int ac, char **av, char **envp)
 		pipex(av, envp);
 	else
 		errors(0);
-	return(0);
+	return (0);
 }
 
-void pipex(char **av, char **envp)
+void	pipex(char **av, char **envp)
 {
 	int	pipe_id;
 	int	pipe_fd[2];
@@ -32,18 +32,27 @@ void pipex(char **av, char **envp)
 	if (pipe_id < 0)
 		errors(2);
 	if (!pipe_id)
+		first(envp, av, pipe_id);
+	wait(0);
+	pipe_id = fork();
+	if (pipe_id < 0)
+		errors(2);
+	if (!pipe_id)
+		second(envp, av, pipe_id);
+	close(pipe_id[1]);
+	close(pipe_id[0]);
+	wait(0);
 }
 
 void	first(char **envp, char **av, int *pipefd)
 {
-	char *str;
-	char **avsplit;
-	int infile;
+	char	*str;
+	char	**avsplit;
+	int		infile;
 
 	close(pipefd[0]);
-	infile = open(av[1], O_RDONLY)
-	if (infile < 0)
-		errors(3);
+	infile = open(av[1], O_RDONLY) if (infile < 0);
+	errors(3);
 	if (dup2(infile, STDIN_FILENO) < 0)
 		errors(6);
 	if (dup2(infile, STDOUT_FILENO) < 0)
@@ -61,7 +70,7 @@ void	second(char **envp, char **av, int *pipefd)
 	char	*str;
 	char	**avsplit;
 	int		outfile;
-	
+
 	close(pipefd[1]);
 	outfile = open(av[4] | O_WRONLY | O_CREAT | O_TRUNC);
 	if (outfile < 0)
