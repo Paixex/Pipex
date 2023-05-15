@@ -6,7 +6,7 @@
 /*   By: digil-pa <digil-pa@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:21:43 by digil-pa          #+#    #+#             */
-/*   Updated: 2023/05/15 19:27:06 by digil-pa         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:33:42 by digil-pa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,3 @@ char	*triple_strjoin(char *s1, char *s2, char *s3)
 	res[i] = 0;
 	return (res);
 }
- 
