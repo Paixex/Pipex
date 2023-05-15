@@ -6,13 +6,13 @@
 /*   By: digil-pa <digil-pa@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:23:25 by digil-pa          #+#    #+#             */
-/*   Updated: 2023/05/07 16:22:25 by digil-pa         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:18:10 by digil-pa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	getpath(char **envp, char	*command)
+char	*getpath(char **envp, char	*command)
 {
 	int		i;
 	char	**paths;
@@ -35,7 +35,7 @@ char	getpath(char **envp, char	*command)
 	}
 	if (!str)
 		errors(5);
-	free(paths);
+	get_free(paths);
 	return (str);
 }
 
